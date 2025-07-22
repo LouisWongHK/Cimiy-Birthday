@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, Cimiy!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1a1a2e;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .card-container {
+            position: relative;
+            width: 350px;
+            height: 500px;
+            transform-style: preserve-3d;
+            transition: transform 1s ease-in-out;
+            cursor: pointer;
+        }
+
+        .card-container:hover {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            color: #fff;
+        }
+        
+        .gift-icon {
+            font-size: 5rem;
+            line-height: 1;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .card-front h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-top: 1rem;
+        }
+
+        .card-front p {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .card-back {
+            background-color: #f0f0f8;
+            transform: rotateY(180deg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .cake {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .plate {
+            width: 200px;
+            height: 20px;
+            background-color: #dcdcdc;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .layer {
+            position: absolute;
+            width: 160px;
+            height: 50px;
+            background-color: #ffc0cb;
+            left: 20px;
+            border-radius: 10px 10px 0 0;
+            box-shadow: inset 0 -3px 0 rgba(0,0,0,0.1);
+        }
+
+        .layer-middle {
+            bottom: 60px;
+            background-color: #f8b195;
+        }
+
+        .layer-top {
+            bottom: 110px;
+            width: 120px;
+            height: 40px;
+            left: 40px;
+            background-color: #f67280;
+        }
+        
+        .icing {
+            position: absolute;
+            width: 160px;
+            height: 20px;
+            background-color: #fff;
+            left: 20px;
+            bottom: 150px;
+            border-radius: 50% / 10px;
+        }
+        
+        .icing::before {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 15px;
+            background-color: #fff;
+            left: 20px;
+            top: -30px;
+            border-radius: 50% / 8px;
+        }
+
+        .candle {
+            position: absolute;
+            width: 8px;
+            height: 30px;
+            background-color: #fdfd96;
+            border-radius: 4px 4px 0 0;
+            bottom: 170px;
+            left: 96px;
+        }
+
+        .flame {
+            position: absolute;
+            width: 8px;
+            height: 12px;
+            background-color: #ffab73;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            top: -12px;
+            animation: flicker 1.5s infinite;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { transform: scaleY(1); opacity: 1; }
+            50% { transform: scaleY(0.8); opacity: 0.8; }
+        }
+
+        .card-back h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #c06c84;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-back p {
+            color: #355c7d;
+            font-size: 1rem;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background-color: #f67280;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall 5s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <!-- Front of the card -->
+        <div class="card-face card-front">
+            <div class="gift-icon">🎁</div>
+            <h2>A Surprise For You!</h2>
+            <p>Hover over this card</p>
+        </div>
+        
+        <!-- Back of the card (visible on hover) -->
+        <div class="card-face card-back">
+            <div class="cake">
+                <div class="plate"></div>
+                <div class="layer layer-middle"></div>
+                <div class="layer layer-top"></div>
+                <div class="icing"></div>
+                <div class="candle">
+                    <div class="flame"></div>
+                </div>
+            </div>
+            <h1>Happy Birthday, Cimiy!</h1>
+            <p>Wishing you a day filled with love, joy, and laughter.</p>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to create a confetti effect
+        document.addEventListener('DOMContentLoaded', () => {
+            const confettiContainer = document.querySelector('body');
+            const confettiCount = 100;
+            const colors = ['#f67280', '#c06c84', '#6c5b7b', '#355c7d', '#f8b195'];
+
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                
+                // Randomize properties for each confetti piece
+                confetti.style.left = `${Math.random() * 100}vw`;
+                confetti.style.top = `${Math.random() * -100}vh`; // Start above the screen
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animationDelay = `${Math.random() * 5}s`;
+                confetti.style.animationDuration = `${3 + Math.random() * 4}s`; // Vary fall speed
+                
+                confettiContainer.appendChild(confetti);
+            }
+        });
+    </script>
+
+</body>
+</html>
